@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.x/tabler-icons.min.css" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --navy:#0E1F3B;
+    --green:#3DAA6E;
+    --green-light:#EAF7F0;
+    --white:#fff;
+    --gray:#555;
+    --light:#F8F8F8;
+  }
+  body{font-family:'Hiragino Sans','Noto Sans JP',sans-serif;color:#222;background:#fff}
+  
+  /* NAV */
+  nav{background:var(--navy);padding:16px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+  .logo{color:var(--green);font-size:22px;font-weight:700;letter-spacing:1px}
+  .nav-links{display:flex;gap:24px}
+  .nav-links a{color:#AACCAA;text-decoration:none;font-size:14px;transition:color .2s}
+  .nav-links a:hover{color:var(--green)}
+  .nav-cta{background:var(--green);color:var(--navy);padding:8px 20px;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;border:none}
+
+  /* HERO */
+  .hero{background:var(--navy);padding:80px 40px;text-align:center;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;border:40px solid rgba(61,170,110,0.08);border-radius:50%}
+  .hero::after{content:'';position:absolute;bottom:-40px;left:-40px;width:200px;height:200px;border:30px solid rgba(61,170,110,0.06);border-radius:50%}
+  .hero-badge{display:inline-block;background:rgba(61,170,110,0.15);color:var(--green);padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:20px;border:1px solid rgba(61,170,110,0.3)}
+  .hero h1{color:#fff;font-size:44px;font-weight:800;line-height:1.3;margin-bottom:12px}
+  .hero h1 span{color:var(--green)}
+  .hero p{color:#8899AA;font-size:17px;margin-bottom:32px;line-height:1.7}
+  .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn-primary{background:var(--green);color:var(--navy);padding:14px 32px;border-radius:10px;font-weight:800;font-size:16px;border:none;cursor:pointer;transition:opacity .2s}
+  .btn-primary:hover{opacity:.85}
+  .btn-outline{background:transparent;color:#fff;padding:14px 32px;border-radius:10px;font-weight:600;font-size:16px;border:1.5px solid rgba(255,255,255,0.2);cursor:pointer}
+  .hero-sub{color:#6688AA;font-size:13px;margin-top:20px}
+
+  /* FREE BADGE */
+  .free-banner{background:var(--green);padding:18px 40px;text-align:center}
+  .free-banner p{color:var(--navy);font-size:18px;font-weight:800}
+
+  /* SECTION */
+  section{padding:64px 40px}
+  .section-label{color:var(--green);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+  .section-title{color:var(--navy);font-size:30px;font-weight:800;margin-bottom:8px;line-height:1.3}
+  .section-sub{color:var(--gray);font-size:15px;line-height:1.7;margin-bottom:40px}
+
+  /* WHY */
+  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+  .why-card{background:#F8F8F8;border-radius:12px;padding:24px;border-left:4px solid var(--green)}
+  .why-num{color:var(--green);font-size:28px;font-weight:800;margin-bottom:8px}
+  .why-card h3{color:var(--navy);font-size:16px;font-weight:700;margin-bottom:6px}
+  .why-card p{color:var(--gray);font-size:13px;line-height:1.6}
+
+  /* SERVICE */
+  .service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .service-card{background:#fff;border:1.5px solid #EEEEEE;border-radius:12px;padding:24px;transition:border-color .2s}
+  .service-card:hover{border-color:var(--green)}
+  .service-icon{width:44px;height:44px;background:var(--green-light);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;color:var(--green);font-size:20px}
+  .service-card h3{color:var(--navy);font-size:15px;font-weight:700;margin-bottom:6px}
+  .service-card p{color:var(--gray);font-size:13px;line-height:1.6}
+
+  /* PRICE */
+  .price-bg{background:var(--light)}
+  .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+  .price-card{background:#fff;border:1.5px solid #EEEEEE;border-radius:12px;padding:20px;text-align:center}
+  .price-card.featured{border-color:var(--green);border-width:2px}
+  .price-tag{display:inline-block;background:var(--green-light);color:var(--green);padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700;margin-bottom:8px}
+  .price-tag.free{background:rgba(61,170,110,0.9);color:#fff}
+  .price-name{color:var(--navy);font-size:15px;font-weight:700;margin-bottom:6px}
+  .price-amount{color:var(--green);font-size:22px;font-weight:800;margin-bottom:4px}
+  .price-desc{color:var(--gray);font-size:12px;line-height:1.5}
+  .referral{background:var(--green-light);border-radius:10px;padding:16px;text-align:center;margin-top:20px;border:1px solid rgba(61,170,110,0.2)}
+  .referral p{color:var(--navy);font-size:14px;font-weight:600}
+
+  /* AREA */
+  .area-cards{display:flex;gap:12px;flex-wrap:wrap}
+  .area-card{background:var(--navy);color:#fff;padding:14px 24px;border-radius:10px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px}
+  .area-card i{color:var(--green);font-size:18px}
+
+  /* COACH */
+  .coach-bg{background:var(--navy)}
+  .coach-inner{display:grid;grid-template-columns:1fr 2fr;gap:40px;align-items:center}
+  .coach-avatar{width:120px;height:120px;border-radius:50%;background:rgba(61,170,110,0.15);border:3px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:40px;color:var(--green)}
+  .coach-name{color:#fff;font-size:22px;font-weight:800;margin-bottom:4px}
+  .coach-title{color:var(--green);font-size:14px;margin-bottom:16px}
+  .coach-quote{color:#8899AA;font-size:15px;line-height:1.8;font-style:italic;border-left:3px solid var(--green);padding-left:16px}
+
+  /* CTA */
+  .cta-bg{background:var(--green);padding:64px 40px;text-align:center}
+  .cta-bg h2{color:var(--navy);font-size:32px;font-weight:800;margin-bottom:8px}
+  .cta-bg p{color:rgba(14,31,59,0.7);font-size:16px;margin-bottom:28px}
+  .cta-btn{background:var(--navy);color:#fff;padding:16px 40px;border-radius:12px;font-weight:800;font-size:16px;border:none;cursor:pointer}
+  .cta-note{color:rgba(14,31,59,0.6);font-size:13px;margin-top:12px}
+
+  /* FOOTER */
+  footer{background:var(--navy);padding:24px 40px;text-align:center;border-top:1px solid rgba(255,255,255,0.05)}
+  footer p{color:#446688;font-size:13px}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">N-Lean</span>
+  <div class="nav-links">
+    <a href="#">サービス</a>
+    <a href="#">料金</a>
+    <a href="#">コーチ</a>
+    <a href="#">エリア</a>
+  </div>
+  <button class="nav-cta">無料体験を申込む</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">⚾ 現役野球選手によるデータ指導</div>
+  <h1>野球を数字で、<br><span>強くする。</span></h1>
+  <p>ラプソードで球速・打球を計測。<br>数値が見えることで、成長が加速する。</p>
+  <div class="hero-btns">
+    <button class="btn-primary">🎁 初回30分 無料体験を申込む</button>
+    <button class="btn-outline">サービスを見る</button>
+  </div>
+  <p class="hero-sub">📍 仙台・いわきを中心に出張対応　💰 現金のみ</p>
+</div>
+
+<div class="free-banner">
+  <p>🎁 初回30分 完全無料体験受付中！ まずは気軽にどうぞ。</p>
+</div>
+
+<section>
+  <p class="section-label">Why N-Lean</p>
+  <h2 class="section-title">なぜ「数値」が<br>子どもの成長を変えるのか</h2>
+  <p class="section-sub">感覚だけで練習を続けていても、何が足りないのかわからない。<br>データで練習する選手と、半年後に大きな差が生まれます。</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-num">01</div>
+      <h3>課題が明確になる</h3>
+      <p>「なんとなく」から「先月より3キロUP」という事実へ。</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">02</div>
+      <h3>モチベーションが上がる</h3>
+      <p>数字が上がると楽しくなる。続けたくなる。野球が好きになる。</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">03</div>
+      <h3>成長が加速する</h3>
+      <p>データで改善するから練習の質が上がる。半年後に大きな差が出る。</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--light)">
+  <p class="section-label">Service</p>
+  <h2 class="section-title">サービス内容</h2>
+  <p class="section-sub">計測から指導・フォローまで、すべてをワンストップで提供します。</p>
+  <div class="service-grid">
+    <div class="service-card">
+      <div class="service-icon"><i class="ti ti-chart-bar" aria-hidden="true"></i></div>
+      <h3>球速・打球の計測</h3>
+      <p>ラプソードでデータを数値化。プロ野球全30球団導入の計測器を使用。</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="ti ti-device-mobile" aria-hidden="true"></i></div>
+      <h3>動画フィードバック</h3>
+      <p>レッスン後にLINEで動画・数値・目標を送信。当日中にお届け。</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="ti ti-target" aria-hidden="true"></i></div>
+      <h3>改善指導</h3>
+      <p>現役選手がフォームの課題を丁寧に解説。リアルなフィードバック。</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="ti ti-clipboard-list" aria-hidden="true"></i></div>
+      <h3>練習メニュー提案</h3>
+      <p>次回までの具体的なトレーニングメニューを作成してLINEで送信。</p>
+    </div>
+  </div>
+</section>
+
+<section class="price-bg">
+  <p class="section-label">Price</p>
+  <h2 class="section-title">料金プラン</h2>
+  <p class="section-sub">まずは無料体験から。続けるかどうかは体験後に決めてください。</p>
+  <div class="price-grid">
+    <div class="price-card featured">
+      <span class="price-tag free">FREE</span>
+      <div class="price-name">初回体験</div>
+      <div class="price-amount">¥0</div>
+      <div class="price-desc">30分 完全無料<br>まずここから</div>
+    </div>
+    <div class="price-card">
+      <span class="price-tag">個人</span>
+      <div class="price-name">パーソナル①</div>
+      <div class="price-amount">¥3,000</div>
+      <div class="price-desc">60分/回<br>計測＋フィードバック</div>
+    </div>
+    <div class="price-card">
+      <span class="price-tag">個人</span>
+      <div class="price-name">パーソナル②</div>
+      <div class="price-amount">¥5,000</div>
+      <div class="price-desc">60分/回<br>＋週間メニュー</div>
+    </div>
+    <div class="price-card">
+      <span class="price-tag">個人</span>
+      <div class="price-name">月2回コース①</div>
+      <div class="price-amount">¥6,000</div>
+      <div class="price-desc">月額<br>パーソナル①×2回</div>
+    </div>
+    <div class="price-card">
+      <span class="price-tag">個人</span>
+      <div class="price-name">月2回コース②</div>
+      <div class="price-amount">¥10,000</div>
+      <div class="price-desc">月額<br>パーソナル②×2回</div>
+    </div>
+    <div class="price-card">
+      <span class="price-tag">チーム</span>
+      <div class="price-name">チーム出張指導</div>
+      <div class="price-amount">¥10,000</div>
+      <div class="price-desc">月額 / 3時間<br>全選手計測＋レポート</div>
+    </div>
+  </div>
+  <div class="referral">
+    <p>🎁 紹介特典：1人紹介するごとに次回レッスン50%オフ！</p>
+  </div>
+</section>
+
+<section>
+  <p class="section-label">Area</p>
+  <h2 class="section-title">対応エリア</h2>
+  <p class="section-sub" style="margin-bottom:20px">出張型なので、チームの練習場・お近くの施設に直接伺います。</p>
+  <div class="area-cards">
+    <div class="area-card"><i class="ti ti-map-pin" aria-hidden="true"></i>仙台市（フェーズ1・メイン）</div>
+    <div class="area-card"><i class="ti ti-map-pin" aria-hidden="true"></i>いわき市（フェーズ2・7月〜）</div>
+    <div class="area-card"><i class="ti ti-map-pin" aria-hidden="true"></i>東北全域（フェーズ3・拡大予定）</div>
+  </div>
+</section>
+
+<section class="coach-bg">
+  <p class="section-label" style="color:var(--green)">Coach</p>
+  <h2 class="section-title" style="color:#fff;margin-bottom:32px">コーチ紹介</h2>
+  <div class="coach-inner">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+      <div class="coach-avatar"><i class="ti ti-user" aria-hidden="true"></i></div>
+      <div style="text-align:center">
+        <div class="coach-name">なおひろ</div>
+        <div class="coach-title">現役野球選手 / 代表</div>
+      </div>
+    </div>
+    <div>
+      <p class="coach-quote">「根性論だけで終わらせない指導を届けたい。プロの世界では当たり前のデータ分析を、もっと早く子供たちに届けたい。そんな想いでN-Leanを立ち上げました。」</p>
+      <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
+        <div style="background:rgba(61,170,110,0.1);border:1px solid rgba(61,170,110,0.2);border-radius:8px;padding:8px 14px;color:#8AC8A8;font-size:13px">⚾ 現役選手</div>
+        <div style="background:rgba(61,170,110,0.1);border:1px solid rgba(61,170,110,0.2);border-radius:8px;padding:8px 14px;color:#8AC8A8;font-size:13px">📊 Rapsodo使用</div>
+        <div style="background:rgba(61,170,110,0.1);border:1px solid rgba(61,170,110,0.2);border-radius:8px;padding:8px 14px;color:#8AC8A8;font-size:13px">📍 仙台・いわき</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-bg">
+  <h2>まずは無料体験から。</h2>
+  <p>プロ野球全30球団導入の計測器で、お子さんの可能性を数字にします。</p>
+  <button class="cta-btn">🎁 LINE「N-Lean」から申込む</button>
+  <p class="cta-note">初回30分 完全無料 ・ 続けるかどうかは体験後に決めてください</p>
+</div>
+
+<footer>
+  <p>© 2026 N-Lean　現役野球選手によるデータ計測＆個人指導　📍 仙台・いわきを中心に出張対応</p>
+</footer>
+
+</body>
+</html>
