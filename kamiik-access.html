@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>営業時間・アクセス | KAMIIK PREMIUM CARE & SPA</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0a0a0a;--gold:#b89a5a;--gold-light:#d4b878;--cream:#f5f0e8;--gray:#888;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--black);color:var(--cream);font-family:'Noto Serif JP',serif;min-height:100vh;}
+.header{text-align:center;padding:48px 24px 32px;border-bottom:1px solid rgba(184,154,90,0.2);position:relative;}
+.header::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.logo-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;letter-spacing:0.3em;color:var(--gold-light);}
+.logo-sub{font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:0.4em;color:var(--gray);margin-top:6px;}
+.page-title{font-size:13px;letter-spacing:0.3em;color:var(--gold);margin-top:20px;}
+.container{max-width:480px;margin:0 auto;padding:24px 20px 60px;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:0.3em;color:var(--gold);margin:28px 0 16px;padding-bottom:10px;border-bottom:1px solid rgba(184,154,90,0.15);}
+.info-card{border:1px solid rgba(184,154,90,0.15);padding:24px;margin-bottom:16px;}
+.info-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(184,154,90,0.08);font-size:13px;}
+.info-row:last-child{border-bottom:none;}
+.info-key{color:var(--gray);font-size:11px;letter-spacing:0.2em;min-width:90px;}
+.info-val{color:var(--cream);text-align:right;flex:1;line-height:1.8;}
+.info-val a{color:var(--gold);text-decoration:none;}
+.hours-table{width:100%;border-collapse:collapse;font-size:13px;}
+.hours-table td{padding:10px 0;border-bottom:1px solid rgba(184,154,90,0.08);}
+.hours-table td:first-child{color:var(--gray);font-size:11px;letter-spacing:0.1em;}
+.hours-table td:last-child{text-align:right;color:var(--cream);}
+.closed{color:#666 !important;}
+.map-box{background:rgba(184,154,90,0.05);border:1px solid rgba(184,154,90,0.2);padding:40px 20px;text-align:center;margin-bottom:16px;}
+.map-icon{font-size:48px;margin-bottom:16px;}
+.map-addr{font-size:12px;color:var(--gray);margin-bottom:16px;line-height:1.8;}
+.map-link{color:var(--gold);font-size:14px;text-decoration:none;letter-spacing:0.1em;}
+.btn-reserve{display:block;width:100%;padding:16px;background:var(--gold);color:var(--black);font-size:13px;letter-spacing:0.3em;font-family:'Noto Serif JP',serif;text-align:center;text-decoration:none;margin-top:32px;}
+.btn-tel{display:block;width:100%;padding:14px;background:transparent;color:var(--gold);border:1px solid rgba(184,154,90,0.4);font-size:13px;letter-spacing:0.2em;font-family:'Noto Serif JP',serif;text-align:center;text-decoration:none;margin-top:12px;}
+.note{font-size:11px;color:var(--gray);line-height:1.8;padding:14px;border-left:2px solid rgba(184,154,90,0.3);margin-top:12px;}
+.ornament{text-align:center;font-family:'Cormorant Garamond',serif;font-size:18px;color:rgba(184,154,90,0.3);letter-spacing:0.5em;margin:20px 0;}
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo-title">KAMIIK</div>
+<div class="logo-sub">PREMIUM CARE & SPA — 荒井店</div>
+<div class="page-title">Access & Hours</div>
+</div>
+<div class="container">
+<div class="section-title">店舗情報</div>
+<div class="info-card">
+<div class="info-row"><div class="info-key">店舗名</div><div class="info-val">KAMIIK PREMIUM CARE & SPA 荒井店</div></div>
+<div class="info-row"><div class="info-key">住所</div><div class="info-val">〒984-0030<br>宮城県仙台市若林区<br>荒井東1丁目4-9<br>リヴィエール103</div></div>
+<div class="info-row"><div class="info-key">電話</div><div class="info-val"><a href="tel:022-288-1890">022-288-1890</a></div></div>
+<div class="info-row"><div class="info-key">最寄り駅</div><div class="info-val">仙台市地下鉄東西線<br>荒井駅</div></div>
+</div>
+<div class="section-title">営業時間</div>
+<div class="info-card">
+<table class="hours-table">
+<tr><td>月曜日</td><td class="closed">定休日</td></tr>
+<tr><td>火曜日</td><td class="closed">定休日</td></tr>
+<tr><td>水曜日</td><td>10:00 〜 22:00</td></tr>
+<tr><td>木曜日</td><td>10:00 〜 22:00</td></tr>
+<tr><td>金曜日</td><td>10:00 〜 22:00</td></tr>
+<tr><td>土曜日</td><td>10:00 〜 22:00</td></tr>
+<tr><td>日曜日</td><td>10:00 〜 19:00</td></tr>
+</table>
+</div>
+<div class="note">最終受付 20:30（日曜日は18:30）※不定休あり</div>
+<div class="ornament">✦ ✦ ✦</div>
+<div class="section-title">地図・アクセス</div>
+<div class="map-box">
+<div class="map-icon">📍</div>
+<div class="map-addr">宮城県仙台市若林区荒井東1丁目4-9<br>リヴィエール103</div>
+<a href="https://maps.google.com/?q=宮城県仙台市若林区荒井東1丁目4-9リヴィエール103" target="_blank" class="map-link">Google マップで開く →</a>
+</div>
+<a href="https://project-pr82b.vercel.app/n_lean_hp.html" class="btn-reserve">ご予約はこちら</a>
+<a href="tel:022-288-1890" class="btn-tel">📞 電話で予約する</a>
+</div>
+</body>
+</html>
