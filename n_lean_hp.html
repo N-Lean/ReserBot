@@ -299,11 +299,29 @@ document.getElementById('c-notes').textContent=notes;
 window.scrollTo(0,0);
 }
 function submitBooking(){
+const data={
+menu:selectedMenuName,
+duration:selectedDuration,
+price:selectedPrice,
+date:selectedDate,
+time:selectedTime,
+name:document.getElementById('name').value,
+tel:document.getElementById('tel').value,
+visitType:document.getElementById('visit-type').value,
+notes:document.getElementById('notes').value
+};
+fetch('https://hook.eu1.make.com/gu7s6s8jo5imtmmpwotk1vqyt6l4hm9z',{
+method:'POST',
+headers:{'Content-Type':'application/json'},
+body:JSON.stringify(data)
+}).catch(err=>console.log(err));
 document.querySelectorAll('.menu-section,.datetime-section,.info-section,.confirm-section').forEach(el=>el.classList.remove('active'));
 document.getElementById('sec-success').classList.add('active');
 document.getElementById('store-footer').style.display='none';
 document.querySelectorAll('.step').forEach(s=>s.classList.add('done'));
 window.scrollTo(0,0);
+}
+
 }
 </script>
 </body>
