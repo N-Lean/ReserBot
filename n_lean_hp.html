@@ -6,15 +6,18 @@
 <title>ご予約 | KAMIIK PREMIUM CARE & SPA</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
 <style>
-:root{--black:#0a0a0a;--gold:#b89a5a;--gold-light:#d4b878;--cream:#f5f0e8;--gray:#888;}
+:root{--black:#0a0a0a;--gold:#b89a5a;--gold-light:#d4b878;--cream:#f5f0e8;--gray:#888;
+  --green:#4a8c3f;--green-dark:#3a6e30;--white:#ffffff;--light-gray:#f5f5f5;--border:#e0e0e0;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--black);color:var(--cream);font-family:'Noto Serif JP',serif;min-height:100vh;}
+
+/* ヘッダー（KAMIIK） */
 .header{text-align:center;padding:48px 24px 32px;border-bottom:1px solid rgba(184,154,90,0.2);position:relative;}
 .header::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
 .logo-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;letter-spacing:0.3em;color:var(--gold-light);}
 .logo-sub{font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:0.4em;color:var(--gray);margin-top:6px;}
 .page-title{font-size:13px;letter-spacing:0.3em;color:var(--gold);margin-top:20px;}
-.container{max-width:480px;margin:0 auto;padding:0 20px 60px;}
+.container{max-width:520px;margin:0 auto;padding:0 16px 60px;}
 .steps{display:flex;align-items:center;justify-content:center;padding:28px 0 20px;}
 .step{display:flex;flex-direction:column;align-items:center;gap:6px;}
 .step-num{width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,154,90,0.3);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--gray);}
@@ -24,314 +27,406 @@ body{background:var(--black);color:var(--cream);font-family:'Noto Serif JP',seri
 .step.active .step-label{color:var(--gold-light);}
 .step-line{width:40px;height:1px;background:rgba(184,154,90,0.2);margin-bottom:14px;}
 .section-title{font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:0.3em;color:var(--gold);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(184,154,90,0.15);}
-.menu-section{display:none;}
-.menu-section.active{display:block;}
-.popular-badge{display:inline-block;background:var(--gold);color:var(--black);font-size:9px;letter-spacing:0.2em;padding:3px 10px;margin-bottom:12px;font-family:'Cormorant Garamond',serif;}
-.menu-card{border:1px solid rgba(184,154,90,0.15);padding:18px;margin-bottom:12px;cursor:pointer;position:relative;transition:all 0.3s;background:rgba(255,255,255,0.01);}
-.menu-card:hover,.menu-card:active{border-color:rgba(184,154,90,0.5);background:rgba(184,154,90,0.04);}
-.menu-card.selected{border-color:var(--gold);background:rgba(184,154,90,0.08);}
-.menu-card.selected::before{content:'✓';position:absolute;top:14px;right:16px;color:var(--gold);font-size:14px;}
-.menu-name{font-size:13px;line-height:1.7;color:var(--cream);margin-bottom:6px;pointer-events:none;}
-.menu-name strong{color:var(--gold-light);}
-.menu-meta{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);pointer-events:none;}
-.menu-meta span{font-size:12px;color:var(--gray);margin-right:8px;}
-.menu-desc{font-size:11px;color:var(--gray);margin-top:8px;line-height:1.7;pointer-events:none;}
-.datetime-section{display:none;}
-.datetime-section.active{display:block;}
-.info-section{display:none;}
-.info-section.active{display:block;}
-.confirm-section{display:none;}
-.confirm-section.active{display:block;}
-.success-section{display:none;text-align:center;padding:40px 0;}
-.success-section.active{display:block;}
+.menu-section,.datetime-section,.info-section,.confirm-section,.success-section{display:none;}
+.menu-section.active,.datetime-section.active,.info-section.active,.confirm-section.active,.success-section.active{display:block;}
+.popular-badge{display:inline-block;background:var(--gold);color:#000;font-size:10px;font-weight:bold;letter-spacing:0.1em;padding:4px 12px;margin-bottom:10px;border-radius:2px;}
+.menu-card{border:2px solid rgba(184,154,90,0.35);padding:18px;margin-bottom:14px;cursor:pointer;position:relative;transition:all 0.25s;background:#181818;border-radius:4px;}
+.menu-card:hover{border-color:var(--gold);background:#222;}
+.menu-card.selected{border-color:var(--gold);background:#1e1a0e;box-shadow:0 0 0 1px var(--gold);}
+.menu-card.selected::before{content:'✓';position:absolute;top:14px;right:16px;color:var(--gold);font-size:18px;font-weight:bold;}
+.menu-name{font-size:14px;line-height:1.8;color:#ffffff;margin-bottom:8px;pointer-events:none;}
+.menu-name strong{color:#f0d080;}
+.menu-meta{font-size:20px;color:#f0d080;font-weight:bold;pointer-events:none;}
+.menu-meta span{font-size:13px;color:#aaa;margin-right:8px;font-weight:normal;}
+.menu-desc{font-size:12px;color:#bbb;margin-top:8px;line-height:1.8;pointer-events:none;}
 .form-group{margin-bottom:20px;}
-.form-label{font-size:10px;letter-spacing:0.3em;color:var(--gold);margin-bottom:8px;display:block;}
-.form-input{width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(184,154,90,0.2);color:var(--cream);padding:14px 16px;font-size:14px;font-family:'Noto Serif JP',serif;outline:none;-webkit-appearance:none;appearance:none;}
-.form-input:focus{border-color:var(--gold);}
-.form-input option{background:#1a1a1a;color:var(--cream);}
-.time-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
-.time-btn{padding:12px 8px;border:1px solid rgba(184,154,90,0.2);background:transparent;color:var(--cream);font-size:13px;font-family:'Noto Serif JP',serif;cursor:pointer;text-align:center;}
-.time-btn.selected{background:var(--gold);color:var(--black);border-color:var(--gold);}
-.time-btn.closed{opacity:0.25;cursor:not-allowed;}
-.confirm-card{border:1px solid rgba(184,154,90,0.3);padding:24px;margin-bottom:24px;}
-.confirm-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(184,154,90,0.08);font-size:13px;}
+.form-label{font-size:11px;letter-spacing:0.2em;color:#f0d080;margin-bottom:8px;display:block;font-weight:bold;}
+.form-input{width:100%;background:#1a1a1a;border:1px solid rgba(184,154,90,0.5);color:#ffffff;padding:14px 16px;font-size:15px;font-family:'Noto Serif JP',serif;outline:none;-webkit-appearance:none;appearance:none;border-radius:3px;}
+.form-input:focus{border-color:var(--gold);background:#222;}
+.form-input option{background:#1a1a1a;color:#fff;}
+.confirm-card{border:1px solid rgba(184,154,90,0.4);padding:24px;margin-bottom:24px;background:#181818;border-radius:4px;}
+.confirm-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-size:14px;}
 .confirm-row:last-child{border-bottom:none;}
-.confirm-key{font-size:10px;letter-spacing:0.2em;color:var(--gray);min-width:80px;}
-.confirm-val{color:var(--cream);text-align:right;flex:1;line-height:1.6;}
-.confirm-price{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);}
-.btn-primary{width:100%;padding:16px;background:var(--gold);color:var(--black);border:none;font-size:13px;letter-spacing:0.3em;font-family:'Noto Serif JP',serif;cursor:pointer;margin-bottom:12px;display:block;text-align:center;}
+.confirm-key{font-size:11px;letter-spacing:0.1em;color:#aaa;min-width:80px;}
+.confirm-val{color:#ffffff;text-align:right;flex:1;line-height:1.6;}
+.confirm-price{font-size:22px;color:#f0d080;font-weight:bold;}
+.btn-primary{width:100%;padding:16px;background:var(--gold);color:#000;border:none;font-size:14px;font-weight:bold;letter-spacing:0.2em;font-family:'Noto Serif JP',serif;cursor:pointer;margin-bottom:12px;display:block;text-align:center;border-radius:3px;}
 .btn-primary:disabled{opacity:0.4;cursor:not-allowed;}
-.btn-secondary{width:100%;padding:14px;background:transparent;color:var(--gray);border:1px solid rgba(184,154,90,0.15);font-size:12px;letter-spacing:0.2em;font-family:'Noto Serif JP',serif;cursor:pointer;display:block;text-align:center;}
-.success-icon{font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold);margin-bottom:16px;}
-.success-title{font-family:'Cormorant Garamond',serif;font-size:22px;letter-spacing:0.2em;color:var(--gold-light);margin-bottom:12px;}
-.success-msg{font-size:13px;color:var(--gray);line-height:1.9;}
+.btn-secondary{width:100%;padding:14px;background:transparent;color:#bbb;border:1px solid rgba(184,154,90,0.3);font-size:13px;letter-spacing:0.15em;font-family:'Noto Serif JP',serif;cursor:pointer;display:block;text-align:center;border-radius:3px;}
+.btn-secondary:hover{color:#fff;border-color:var(--gold);}
 .store-info{margin-top:40px;padding:20px;border:1px solid rgba(184,154,90,0.1);font-size:12px;color:var(--gray);line-height:2;text-align:center;}
 .store-info a{color:var(--gold);text-decoration:none;}
 .note{font-size:11px;color:var(--gray);line-height:1.8;margin-top:16px;padding:14px;border-left:2px solid rgba(184,154,90,0.3);}
 .ornament{text-align:center;font-family:'Cormorant Garamond',serif;font-size:18px;color:rgba(184,154,90,0.3);letter-spacing:0.5em;margin:24px 0 8px;}
+
+/* ===== カレンダーグリッド ===== */
+.cal-wrap{background:#fff;border-radius:12px;overflow:hidden;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,0.15);}
+
+/* 週ナビ */
+.week-nav{display:flex;align-items:center;justify-content:space-between;background:var(--green);padding:14px 16px;}
+.week-label{color:#fff;font-size:14px;font-weight:bold;letter-spacing:0.04em;}
+.week-btn{background:rgba(255,255,255,0.2);border:none;color:#fff;font-size:24px;cursor:pointer;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;line-height:1;transition:background 0.15s;}
+.week-btn:hover{background:rgba(255,255,255,0.35);}
+.week-btn:disabled{opacity:0.25;cursor:not-allowed;}
+
+/* グリッドテーブル */
+.week-grid{border-collapse:collapse;width:100%;}
+.week-grid th{font-size:11px;padding:10px 2px 8px;text-align:center;background:#fff;color:#666;font-weight:500;border-bottom:2px solid #e8e8e8;}
+.week-grid th.col-time{width:46px;color:#bbb;}
+.week-grid th .th-dow{font-size:11px;color:#999;}
+.week-grid th .th-date{font-size:19px;font-weight:bold;display:block;margin-top:2px;color:#222;}
+.week-grid th.col-sat .th-dow{color:#5588cc;}
+.week-grid th.col-sat .th-date{color:#4477bb;}
+.week-grid th.col-sun .th-dow{color:#cc5544;}
+.week-grid th.col-sun .th-date{color:#bb4433;}
+.week-grid th.col-closed .th-dow,.week-grid th.col-closed .th-date{color:#ddd;}
+.week-grid th.col-today .th-date{color:var(--green);}
+.week-grid td{text-align:center;padding:3px 1px;border-bottom:1px solid #f2f2f2;background:#fff;}
+.week-grid td.td-time{font-size:11px;color:#bbb;background:#fafafa;border-right:1px solid #eee;padding:0 4px;}
+.week-grid tr:last-child td{border-bottom:none;}
+
+/* スロットボタン — 四角枠＋○× */
+.slot-btn{width:40px;height:40px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;border:1.5px solid #ddd;background:#fff;transition:all 0.15s;font-size:18px;font-weight:bold;}
+.slot-btn.open{color:var(--green);border-color:#aaddaa;background:#f5fff5;}
+.slot-btn.open:active{background:var(--green);color:#fff;border-color:var(--green);transform:scale(0.93);}
+.slot-btn.open.selected{background:var(--green);color:#fff;border-color:var(--green);box-shadow:0 2px 8px rgba(74,140,63,0.35);}
+.slot-btn.closed{color:#ccc;border-color:#eee;background:#fafafa;cursor:not-allowed;font-size:15px;}
+.slot-btn.past{color:#e0e0e0;border-color:#f0f0f0;background:#fafafa;cursor:not-allowed;font-size:15px;}
+
+/* 選択済み表示 */
+.selected-info{margin-top:4px;padding:14px 16px;background:rgba(74,140,63,0.08);border:2px solid rgba(74,140,63,0.4);border-radius:8px;font-size:15px;color:#2a6a22;font-weight:bold;min-height:48px;text-align:center;letter-spacing:0.05em;}
 </style>
 </head>
 <body>
 <div class="header">
-<div class="logo-title">KAMIIK</div>
-<div class="logo-sub">PREMIUM CARE & SPA — 荒井店</div>
-<div class="page-title">Reservation</div>
+  <div class="logo-title">KAMIIK</div>
+  <div class="logo-sub">PREMIUM CARE & SPA — 荒井店</div>
+  <div class="page-title">Reservation</div>
 </div>
 <div class="container">
-<div class="steps">
-<div class="step active" id="step1"><div class="step-num">1</div><div class="step-label">メニュー</div></div>
-<div class="step-line"></div>
-<div class="step" id="step2"><div class="step-num">2</div><div class="step-label">日時</div></div>
-<div class="step-line"></div>
-<div class="step" id="step3"><div class="step-num">3</div><div class="step-label">お客様情報</div></div>
-<div class="step-line"></div>
-<div class="step" id="step4"><div class="step-num">4</div><div class="step-label">確認</div></div>
-</div>
-<div class="menu-section active" id="sec-menu">
-<div class="section-title">Menu Selection</div>
-<div class="popular-badge">人気 NO.1</div>
-<div class="menu-card" id="m1">
-<div class="menu-name">『<strong>髪を太く育てるヘッドスパ＋顔肌うるさらエステ</strong>』＋カット＋顔そり＋眉カット</div>
-<div class="menu-meta"><span>150分</span>¥15,500</div>
-<div class="menu-desc">髪と顔肌の悩みに特化。入念な頭皮頭髪骨格カウンセリング＋ヘッドスパ＋フェイスエステ＋スタイリング</div>
-</div>
-<div class="popular-badge" style="margin-top:4px;">人気 NO.2</div>
-<div class="menu-card" id="m2">
-<div class="menu-name">『<strong>クレンジング（シャンプーでは取れない汚れを取り除く）</strong>』＋カット</div>
-<div class="menu-meta"><span>90分</span>¥8,800</div>
-<div class="menu-desc">頭皮をいたわり環境を整える。特別な生炭酸でクレンジング</div>
-</div>
-<div class="popular-badge" style="margin-top:4px;">人気 NO.3</div>
-<div class="menu-card" id="m3">
-<div class="menu-name">『<strong>白髪染め＋髪を太く育てるヘッドスパ</strong>』＋カット＋顔そり＋眉カット</div>
-<div class="menu-meta"><span>150分</span>¥15,500</div>
-<div class="menu-desc">しみない・ぎしぎししない白髪染め＋ヘッドスパ＋スタイリング</div>
-</div>
-<div class="ornament">✦ ✦ ✦</div>
-<div class="menu-card" id="m4">
-<div class="menu-name">『<strong>カット＋ヘッドスパ</strong>』＋シェービング＋眉カット</div>
-<div class="menu-meta"><span>90分</span>¥7,700 <small style="font-size:11px;color:#888;">初回</small></div>
-</div>
-<div class="menu-card" id="m5">
-<div class="menu-name">『<strong>カット＋顔肌うるさらフェイシャル</strong>』＋シェービング＋眉カット</div>
-<div class="menu-meta"><span>90分</span>¥7,700 <small style="font-size:11px;color:#888;">初回</small></div>
-</div>
-<div class="menu-card" id="m6">
-<div class="menu-name">『<strong>眉カット＋顔肌うるさらフェイシャルエステ</strong>』＋極上メンズシェービング</div>
-<div class="menu-meta"><span>30分</span>¥4,980</div>
-</div>
-<div class="menu-card" id="m7">
-<div class="menu-name">『<strong>ヘッドスパ＋生炭酸シャンプー</strong>』＋頭マッサージ</div>
-<div class="menu-meta"><span>30分</span>¥4,980</div>
-<div class="menu-desc">大人気の為人数限定。早い者勝ち！！</div>
-</div>
-<div style="margin-top:24px;">
-<button class="btn-primary" id="btn-to-step2" onclick="goToStep(2)" disabled>次へ — 日時を選ぶ</button>
-</div>
-<div class="note">※表示価格はすべて税込です</div>
-</div>
-<div class="datetime-section" id="sec-datetime">
-<div class="section-title">Date & Time</div>
-<div class="form-group">
-<label class="form-label">ご希望日</label>
-<input type="date" class="form-input" id="booking-date" onchange="updateTimeSlots()">
-</div>
-<div class="form-group" id="time-group" style="display:none;">
-<label class="form-label">ご希望時間</label>
-<div class="time-grid" id="time-grid"></div>
-</div>
-<div style="margin-top:24px;">
-<button class="btn-primary" id="btn-to-step3" onclick="goToStep(3)" disabled>次へ — お客様情報</button>
-<button class="btn-secondary" onclick="goToStep(1)">← メニューに戻る</button>
-</div>
-</div>
-<div class="info-section" id="sec-info">
-<div class="section-title">Your Information</div>
-<div class="form-group">
-<label class="form-label">お名前</label>
-<input type="text" class="form-input" id="name" placeholder="山田 太郎" oninput="checkInfoForm()">
-</div>
-<div class="form-group">
-<label class="form-label">お電話番号</label>
-<input type="tel" class="form-input" id="tel" placeholder="090-0000-0000" oninput="checkInfoForm()">
-</div>
-<div class="form-group">
-<label class="form-label">初回 / リピーター</label>
-<select class="form-input" id="visit-type" onchange="checkInfoForm()">
-<option value="">選択してください</option>
-<option value="初回">初回ご来店</option>
-<option value="リピーター">リピーター</option>
-</select>
-</div>
-<div class="form-group">
-<label class="form-label">ご要望（任意）</label>
-<textarea class="form-input" id="notes" rows="3" placeholder="アレルギーや気になる点など" style="resize:vertical;"></textarea>
-</div>
-<div style="margin-top:24px;">
-<button class="btn-primary" id="btn-to-step4" onclick="goToStep(4)" disabled>次へ — 予約内容を確認</button>
-<button class="btn-secondary" onclick="goToStep(2)">← 日時に戻る</button>
-</div>
-</div>
-<div class="confirm-section" id="sec-confirm">
-<div class="section-title">Confirmation</div>
-<div class="confirm-card">
-<div class="confirm-row"><div class="confirm-key">メニュー</div><div class="confirm-val" id="c-menu"></div></div>
-<div class="confirm-row"><div class="confirm-key">施術時間</div><div class="confirm-val" id="c-duration"></div></div>
-<div class="confirm-row"><div class="confirm-key">料金</div><div class="confirm-val confirm-price" id="c-price"></div></div>
-<div class="confirm-row"><div class="confirm-key">日時</div><div class="confirm-val" id="c-datetime"></div></div>
-<div class="confirm-row"><div class="confirm-key">お名前</div><div class="confirm-val" id="c-name"></div></div>
-<div class="confirm-row"><div class="confirm-key">電話番号</div><div class="confirm-val" id="c-tel"></div></div>
-<div class="confirm-row"><div class="confirm-key">ご来店</div><div class="confirm-val" id="c-visit"></div></div>
-<div class="confirm-row" id="c-notes-row"><div class="confirm-key">ご要望</div><div class="confirm-val" id="c-notes"></div></div>
-</div>
-<button class="btn-primary" onclick="submitBooking()">この内容で予約を確定する</button>
-<button class="btn-secondary" onclick="goToStep(3)">← お客様情報に戻る</button>
-<div class="note">ご予約確定後、LINEにご確認メッセージをお送りします。</div>
-</div>
-<div class="success-section" id="sec-success">
-<div class="success-icon">✦</div>
-<div class="success-title">ご予約ありがとうございます</div>
-<div class="success-msg">間もなくLINEにご確認メッセージをお送りします。<br>皆様のご来店を心よりお待ちしております。</div>
-<div class="store-info">
-KAMIIK PREMIUM CARE & SPA 荒井店<br>
-〒984-0030 宮城県仙台市若林区荒井東1丁目4-9 リヴィエール103<br>
-<a href="tel:022-288-1890">TEL 022-288-1890</a><br>
-営業時間 10:00〜22:00（日曜19:00まで）定休日 毎週月・火曜日
-</div>
-</div>
-<div class="store-info" id="store-footer">
-KAMIIK PREMIUM CARE & SPA 荒井店<br>
-営業：水〜土 10:00〜22:00 / 日 10:00〜19:00<br>
-定休：毎週月・火曜日<br>
-<a href="tel:022-288-1890">TEL 022-288-1890</a>
-</div>
-</div>
-<script>
-var selectedMenuName='';
-var selectedPrice='';
-var selectedDuration='';
-var selectedDate='';
-var selectedTime='';
+  <div class="steps">
+    <div class="step active" id="step1"><div class="step-num">1</div><div class="step-label">メニュー</div></div>
+    <div class="step-line"></div>
+    <div class="step" id="step2"><div class="step-num">2</div><div class="step-label">日時</div></div>
+    <div class="step-line"></div>
+    <div class="step" id="step3"><div class="step-num">3</div><div class="step-label">お客様情報</div></div>
+    <div class="step-line"></div>
+    <div class="step" id="step4"><div class="step-num">4</div><div class="step-label">確認</div></div>
+  </div>
 
+  <!-- STEP1 メニュー -->
+  <div class="menu-section active" id="sec-menu">
+    <div class="section-title">Menu Selection</div>
+    <div class="popular-badge">人気 NO.1</div>
+    <div class="menu-card" id="m1">
+      <div class="menu-name">『<strong>髪を太く育てるヘッドスパ＋顔肌うるさらエステ</strong>』＋カット＋顔そり＋眉カット</div>
+      <div class="menu-meta"><span>150分</span>¥15,500</div>
+      <div class="menu-desc">髪と顔肌の悩みに特化。入念な頭皮頭髪骨格カウンセリング＋ヘッドスパ＋フェイスエステ＋スタイリング</div>
+    </div>
+    <div class="popular-badge" style="margin-top:4px;">人気 NO.2</div>
+    <div class="menu-card" id="m2">
+      <div class="menu-name">『<strong>クレンジング（シャンプーでは取れない汚れを取り除く）</strong>』＋カット</div>
+      <div class="menu-meta"><span>90分</span>¥8,800</div>
+      <div class="menu-desc">頭皮をいたわり環境を整える。特別な生炭酸でクレンジング</div>
+    </div>
+    <div class="popular-badge" style="margin-top:4px;">人気 NO.3</div>
+    <div class="menu-card" id="m3">
+      <div class="menu-name">『<strong>白髪染め＋髪を太く育てるヘッドスパ</strong>』＋カット＋顔そり＋眉カット</div>
+      <div class="menu-meta"><span>150分</span>¥15,500</div>
+      <div class="menu-desc">しみない・ぎしぎししない白髪染め＋ヘッドスパ＋スタイリング</div>
+    </div>
+    <div class="ornament">✦ ✦ ✦</div>
+    <div class="menu-card" id="m4">
+      <div class="menu-name">『<strong>カット＋ヘッドスパ</strong>』＋シェービング＋眉カット</div>
+      <div class="menu-meta"><span>90分</span>¥7,700 <small style="font-size:11px;color:#888;">初回</small></div>
+    </div>
+    <div class="menu-card" id="m5">
+      <div class="menu-name">『<strong>カット＋顔肌うるさらフェイシャル</strong>』＋シェービング＋眉カット</div>
+      <div class="menu-meta"><span>90分</span>¥7,700 <small style="font-size:11px;color:#888;">初回</small></div>
+    </div>
+    <div class="menu-card" id="m6">
+      <div class="menu-name">『<strong>眉カット＋顔肌うるさらフェイシャルエステ</strong>』＋極上メンズシェービング</div>
+      <div class="menu-meta"><span>30分</span>¥4,980</div>
+    </div>
+    <div class="menu-card" id="m7">
+      <div class="menu-name">『<strong>ヘッドスパ＋生炭酸シャンプー</strong>』＋頭マッサージ</div>
+      <div class="menu-meta"><span>30分</span>¥4,980</div>
+      <div class="menu-desc">大人気の為人数限定。早い者勝ち！！</div>
+    </div>
+    <div style="margin-top:24px;">
+      <button class="btn-primary" id="btn-to-step2" onclick="goToStep(2)" disabled>次へ — 日時を選ぶ</button>
+    </div>
+    <div class="note">※表示価格はすべて税込です</div>
+  </div>
+
+  <!-- STEP2 日時 -->
+  <div class="datetime-section" id="sec-datetime">
+    <div class="section-title">Date & Time</div>
+    <div class="cal-wrap">
+      <div class="week-nav">
+        <button class="week-btn" id="btn-prev-week" onclick="changeWeek(-1)">&#8249;</button>
+        <div class="week-label" id="week-label"></div>
+        <button class="week-btn" onclick="changeWeek(1)">&#8250;</button>
+      </div>
+      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
+        <table class="week-grid" id="week-grid"></table>
+      </div>
+    </div>
+    <div class="selected-info" id="selected-info">日付と時間を選択してください</div>
+    <div style="margin-top:16px;">
+      <button class="btn-primary" id="btn-to-step3" onclick="goToStep(3)" disabled>次へ — お客様情報</button>
+      <button class="btn-secondary" onclick="goToStep(1)">← メニューに戻る</button>
+    </div>
+  </div>
+
+  <!-- STEP3 お客様情報 -->
+  <div class="info-section" id="sec-info">
+    <div class="section-title">Your Information</div>
+    <div class="form-group">
+      <label class="form-label">お名前</label>
+      <input type="text" class="form-input" id="name" placeholder="山田 太郎" oninput="checkInfoForm()">
+    </div>
+    <div class="form-group">
+      <label class="form-label">お電話番号</label>
+      <input type="tel" class="form-input" id="tel" placeholder="090-0000-0000" oninput="checkInfoForm()">
+    </div>
+    <div class="form-group">
+      <label class="form-label">初回 / リピーター</label>
+      <select class="form-input" id="visit-type" onchange="checkInfoForm()">
+        <option value="">選択してください</option>
+        <option value="初回">初回ご来店</option>
+        <option value="リピーター">リピーター</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">ご要望（任意）</label>
+      <textarea class="form-input" id="notes" rows="3" placeholder="アレルギーや気になる点など" style="resize:vertical;"></textarea>
+    </div>
+    <div style="margin-top:24px;">
+      <button class="btn-primary" id="btn-to-step4" onclick="goToStep(4)" disabled>次へ — 予約内容を確認</button>
+      <button class="btn-secondary" onclick="goToStep(2)">← 日時に戻る</button>
+    </div>
+  </div>
+
+  <!-- STEP4 確認 -->
+  <div class="confirm-section" id="sec-confirm">
+    <div class="section-title">Confirmation</div>
+    <div class="confirm-card">
+      <div class="confirm-row"><div class="confirm-key">メニュー</div><div class="confirm-val" id="c-menu"></div></div>
+      <div class="confirm-row"><div class="confirm-key">施術時間</div><div class="confirm-val" id="c-duration"></div></div>
+      <div class="confirm-row"><div class="confirm-key">料金</div><div class="confirm-val confirm-price" id="c-price"></div></div>
+      <div class="confirm-row"><div class="confirm-key">日時</div><div class="confirm-val" id="c-datetime"></div></div>
+      <div class="confirm-row"><div class="confirm-key">お名前</div><div class="confirm-val" id="c-name"></div></div>
+      <div class="confirm-row"><div class="confirm-key">電話番号</div><div class="confirm-val" id="c-tel"></div></div>
+      <div class="confirm-row"><div class="confirm-key">ご来店</div><div class="confirm-val" id="c-visit"></div></div>
+      <div class="confirm-row" id="c-notes-row"><div class="confirm-key">ご要望</div><div class="confirm-val" id="c-notes"></div></div>
+    </div>
+    <button class="btn-primary" onclick="submitBooking()">この内容で予約を確定する</button>
+    <button class="btn-secondary" onclick="goToStep(3)">← お客様情報に戻る</button>
+    <div class="note">ご予約確定後、LINEにご確認メッセージをお送りします。</div>
+  </div>
+
+  <!-- 完了 -->
+  <div class="success-section" id="sec-success">
+    <div style="padding:40px 0;text-align:center;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold);margin-bottom:16px;">✦</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;letter-spacing:0.2em;color:var(--gold-light);margin-bottom:12px;">ご予約ありがとうございます</div>
+      <div style="font-size:13px;color:var(--gray);line-height:1.9;">間もなくLINEにご確認メッセージをお送りします。<br>皆様のご来店を心よりお待ちしております。</div>
+      <div class="store-info">
+        KAMIIK PREMIUM CARE & SPA 荒井店<br>
+        〒984-0030 宮城県仙台市若林区荒井東1丁目4-9 リヴィエール103<br>
+        <a href="tel:022-288-1890">TEL 022-288-1890</a><br>
+        営業時間 10:00〜22:00（日曜19:00まで）定休日 毎週月・火曜日
+      </div>
+    </div>
+  </div>
+
+  <div class="store-info" id="store-footer">
+    KAMIIK PREMIUM CARE & SPA 荒井店<br>
+    営業：水〜土 10:00〜22:00 / 日 10:00〜19:00<br>
+    定休：毎週月・火曜日<br>
+    <a href="tel:022-288-1890">TEL 022-288-1890</a>
+  </div>
+</div>
+
+<script>
+var selectedMenuName='',selectedPrice='',selectedDuration='',selectedDate='',selectedTime='';
 var menuData={
-m1:{name:'髪を太く育てるヘッドスパ＋顔肌うるさらエステ＋カット＋顔そり＋眉カット',price:'¥15,500',duration:'150分'},
-m2:{name:'クレンジング＋カット',price:'¥8,800',duration:'90分'},
-m3:{name:'白髪染め＋ヘッドスパ＋カット＋顔そり＋眉カット',price:'¥15,500',duration:'150分'},
-m4:{name:'カット＋ヘッドスパ＋シェービング＋眉カット',price:'¥7,700（初回）',duration:'90分'},
-m5:{name:'カット＋顔肌フェイシャル＋シェービング＋眉カット',price:'¥7,700（初回）',duration:'90分'},
-m6:{name:'眉カット＋フェイシャルエステ＋メンズシェービング',price:'¥4,980',duration:'30分'},
-m7:{name:'ヘッドスパ＋生炭酸シャンプー＋頭マッサージ',price:'¥4,980',duration:'30分'}
+  m1:{name:'髪を太く育てるヘッドスパ＋顔肌うるさらエステ＋カット＋顔そり＋眉カット',price:'¥15,500',duration:'150分'},
+  m2:{name:'クレンジング＋カット',price:'¥8,800',duration:'90分'},
+  m3:{name:'白髪染め＋ヘッドスパ＋カット＋顔そり＋眉カット',price:'¥15,500',duration:'150分'},
+  m4:{name:'カット＋ヘッドスパ＋シェービング＋眉カット',price:'¥7,700（初回）',duration:'90分'},
+  m5:{name:'カット＋顔肌フェイシャル＋シェービング＋眉カット',price:'¥7,700（初回）',duration:'90分'},
+  m6:{name:'眉カット＋フェイシャルエステ＋メンズシェービング',price:'¥4,980',duration:'30分'},
+  m7:{name:'ヘッドスパ＋生炭酸シャンプー＋頭マッサージ',price:'¥4,980',duration:'30分'}
 };
 
 document.querySelectorAll('.menu-card').forEach(function(card){
-card.addEventListener('click',function(){
-var id=this.id;
-document.querySelectorAll('.menu-card').forEach(function(c){c.classList.remove('selected');});
-this.classList.add('selected');
-selectedMenuName=menuData[id].name;
-selectedPrice=menuData[id].price;
-selectedDuration=menuData[id].duration;
-document.getElementById('btn-to-step2').disabled=false;
-}.bind(card));
+  card.addEventListener('click',function(){
+    document.querySelectorAll('.menu-card').forEach(function(c){c.classList.remove('selected');});
+    this.classList.add('selected');
+    var d=menuData[this.id];
+    selectedMenuName=d.name; selectedPrice=d.price; selectedDuration=d.duration;
+    document.getElementById('btn-to-step2').disabled=false;
+  });
 });
 
-var dateInput=document.getElementById('booking-date');
-var today=new Date();
-dateInput.min=today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+var today=new Date(); today.setHours(0,0,0,0);
+var weekOffset=0;
+var TIMES=['10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00'];
+var DOW=['日','月','火','水','木','金','土'];
 
-function updateTimeSlots(){
-var dateVal=document.getElementById('booking-date').value;
-if(!dateVal)return;
-var d=new Date(dateVal);
-var day=d.getDay();
-document.getElementById('time-group').style.display='block';
-var grid=document.getElementById('time-grid');
-grid.innerHTML='';
-var isClosed=(day===1||day===2);
-var lastSlot=(day===0)?18.5:20.5;
-for(var h=10;h<=20.5;h+=0.5){
-var hour=Math.floor(h);
-var min=h%1===0.5?'30':'00';
-var t=hour+':'+min;
-var btn=document.createElement('button');
-btn.className='time-btn';
-btn.textContent=t;
-var hVal=hour+(min==='30'?0.5:0);
-if(isClosed||hVal>lastSlot){
-btn.classList.add('closed');
-btn.disabled=true;
-}else{
-(function(timeStr){
-btn.addEventListener('click',function(){
-document.querySelectorAll('.time-btn').forEach(function(b){b.classList.remove('selected');});
-this.classList.add('selected');
-selectedDate=dateVal;
-selectedTime=timeStr;
-document.getElementById('btn-to-step3').disabled=false;
-}.bind(btn));
-})(t);
+function getWeekDays(){
+  // 今日を起点に7日間表示
+  var days=[];
+  for(var i=0;i<7;i++){
+    var x=new Date(today);
+    x.setDate(today.getDate()+i+(weekOffset*7));
+    days.push(x);
+  }
+  return days;
 }
-grid.appendChild(btn);
+
+function renderWeekGrid(){
+  var days=getWeekDays();
+  var first=days[0],last=days[6];
+  document.getElementById('week-label').textContent=
+    first.getFullYear()+'-'+String(first.getMonth()+1).padStart(2,'0')+'-'+String(first.getDate()).padStart(2,'0')+
+    ' ~ '+last.getFullYear()+'-'+String(last.getMonth()+1).padStart(2,'0')+'-'+String(last.getDate()).padStart(2,'0');
+
+  document.getElementById('btn-prev-week').disabled=(weekOffset<=0);
+
+  var tbl=document.getElementById('week-grid');
+  tbl.innerHTML='';
+
+  // thead
+  var thead=document.createElement('thead');
+  var tr=document.createElement('tr');
+  var th0=document.createElement('th'); th0.className='col-time'; tr.appendChild(th0);
+  days.forEach(function(d){
+    var th=document.createElement('th');
+    var dw=d.getDay();
+    var cls='';
+    if(dw===0) cls='col-sun';
+    else if(dw===6) cls='col-sat';
+    if(dw===1||dw===2) cls='col-closed';
+    if(d.getTime()===today.getTime()) cls+=' col-today';
+    th.className=cls;
+    th.innerHTML='<span class="th-dow">'+DOW[dw]+'</span><span class="th-date">'+d.getDate()+'</span>';
+    tr.appendChild(th);
+  });
+  thead.appendChild(tr);
+  tbl.appendChild(thead);
+
+  // tbody
+  var tbody=document.createElement('tbody');
+  TIMES.forEach(function(time){
+    var hour=parseInt(time);
+    var tr2=document.createElement('tr');
+    var td0=document.createElement('td'); td0.className='td-time'; td0.textContent=time; tr2.appendChild(td0);
+    days.forEach(function(d){
+      var td=document.createElement('td');
+      var dw=d.getDay();
+      var btn=document.createElement('button');
+      btn.className='slot-btn';
+      var isPast=(d<today);
+      var isClosed=(dw===1||dw===2);
+      var isSunOver=(dw===0&&hour>=19);
+      var isOver=(hour>=21);
+      if(isPast||isClosed||isSunOver||isOver){
+        btn.classList.add(isPast?'past':'closed');
+        btn.textContent='×';
+        btn.disabled=true;
+      } else {
+        btn.classList.add('open');
+        btn.textContent='○';
+        var ds=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+        (function(dateStr,timeStr,btnEl){
+          btnEl.addEventListener('click',function(){
+            document.querySelectorAll('.slot-btn.selected').forEach(function(b){b.classList.remove('selected');});
+            btnEl.classList.add('selected');
+            selectedDate=dateStr;
+            selectedTime=timeStr;
+            var dObj=new Date(dateStr+'T00:00:00');
+            document.getElementById('selected-info').textContent=
+              (dObj.getMonth()+1)+'月'+dObj.getDate()+'日（'+DOW[dObj.getDay()]+'） '+timeStr+'〜';
+            document.getElementById('btn-to-step3').disabled=false;
+          });
+        })(ds,time,btn);
+      }
+      // 選択済み復元
+      var ds2=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+      if(ds2===selectedDate&&time===selectedTime) btn.classList.add('selected');
+      td.appendChild(btn);
+      tr2.appendChild(td);
+    });
+    tbody.appendChild(tr2);
+  });
+  tbl.appendChild(tbody);
 }
+
+function changeWeek(delta){
+  weekOffset+=delta;
+  if(weekOffset<0) weekOffset=0;
+  renderWeekGrid();
 }
 
 function checkInfoForm(){
-var n=document.getElementById('name').value.trim();
-var t=document.getElementById('tel').value.trim();
-var v=document.getElementById('visit-type').value;
-document.getElementById('btn-to-step4').disabled=!(n&&t&&v);
+  var n=document.getElementById('name').value.trim();
+  var t=document.getElementById('tel').value.trim();
+  var v=document.getElementById('visit-type').value;
+  document.getElementById('btn-to-step4').disabled=!(n&&t&&v);
 }
 
 function goToStep(n){
-document.querySelectorAll('.menu-section,.datetime-section,.info-section,.confirm-section,.success-section').forEach(function(el){el.classList.remove('active');});
-document.querySelectorAll('.step').forEach(function(s){s.classList.remove('active','done');});
-var sections=['sec-menu','sec-datetime','sec-info','sec-confirm'];
-if(n<=4)document.getElementById(sections[n-1]).classList.add('active');
-for(var i=1;i<=4;i++){
-if(i<n)document.getElementById('step'+i).classList.add('done');
-else if(i===n)document.getElementById('step'+i).classList.add('active');
-}
-document.getElementById('store-footer').style.display=n===1?'block':'none';
-if(n===4){
-var dateObj=new Date(selectedDate);
-var weekdays=['日','月','火','水','木','金','土'];
-var dStr=dateObj.getFullYear()+'年'+(dateObj.getMonth()+1)+'月'+dateObj.getDate()+'日（'+weekdays[dateObj.getDay()]+'）';
-document.getElementById('c-menu').textContent=selectedMenuName;
-document.getElementById('c-duration').textContent=selectedDuration;
-document.getElementById('c-price').textContent=selectedPrice;
-document.getElementById('c-datetime').textContent=dStr+' '+selectedTime+'〜';
-document.getElementById('c-name').textContent=document.getElementById('name').value;
-document.getElementById('c-tel').textContent=document.getElementById('tel').value;
-document.getElementById('c-visit').textContent=document.getElementById('visit-type').value;
-var notes=document.getElementById('notes').value;
-document.getElementById('c-notes-row').style.display=notes?'flex':'none';
-document.getElementById('c-notes').textContent=notes;
-}
-window.scrollTo(0,0);
+  ['sec-menu','sec-datetime','sec-info','sec-confirm','sec-success'].forEach(function(id){
+    document.getElementById(id).classList.remove('active');
+  });
+  document.querySelectorAll('.step').forEach(function(s){s.classList.remove('active','done');});
+  var secs=['sec-menu','sec-datetime','sec-info','sec-confirm'];
+  if(n<=4) document.getElementById(secs[n-1]).classList.add('active');
+  for(var i=1;i<=4;i++){
+    if(i<n) document.getElementById('step'+i).classList.add('done');
+    else if(i===n) document.getElementById('step'+i).classList.add('active');
+  }
+  document.getElementById('store-footer').style.display=(n===1)?'block':'none';
+  if(n===2) renderWeekGrid();
+  if(n===4){
+    var dObj=new Date(selectedDate+'T00:00:00');
+    var dStr=dObj.getFullYear()+'年'+(dObj.getMonth()+1)+'月'+dObj.getDate()+'日（'+DOW[dObj.getDay()]+'）';
+    document.getElementById('c-menu').textContent=selectedMenuName;
+    document.getElementById('c-duration').textContent=selectedDuration;
+    document.getElementById('c-price').textContent=selectedPrice;
+    document.getElementById('c-datetime').textContent=dStr+' '+selectedTime+'〜';
+    document.getElementById('c-name').textContent=document.getElementById('name').value;
+    document.getElementById('c-tel').textContent=document.getElementById('tel').value;
+    document.getElementById('c-visit').textContent=document.getElementById('visit-type').value;
+    var notes=document.getElementById('notes').value;
+    document.getElementById('c-notes-row').style.display=notes?'flex':'none';
+    document.getElementById('c-notes').textContent=notes;
+  }
+  window.scrollTo(0,0);
 }
 
 function submitBooking(){
-var data={
-menu:selectedMenuName,
-duration:selectedDuration,
-price:selectedPrice,
-date:selectedDate,
-time:selectedTime,
-name:document.getElementById('name').value,
-tel:document.getElementById('tel').value,
-visitType:document.getElementById('visit-type').value,
-notes:document.getElementById('notes').value
-};
-fetch('https://hook.eu1.make.com/gu7s6s8jo5imtmmpwotk1vqyt6l4hm9z',{
-method:'POST',
-headers:{'Content-Type':'application/json'},
-body:JSON.stringify(data)
-}).catch(function(err){console.log(err);});
-document.querySelectorAll('.menu-section,.datetime-section,.info-section,.confirm-section').forEach(function(el){el.classList.remove('active');});
-document.getElementById('sec-success').classList.add('active');
-document.getElementById('store-footer').style.display='none';
-document.querySelectorAll('.step').forEach(function(s){s.classList.add('done');});
-window.scrollTo(0,0);
+  var data={
+    menu:selectedMenuName,duration:selectedDuration,price:selectedPrice,
+    date:selectedDate,time:selectedTime,
+    name:document.getElementById('name').value,
+    tel:document.getElementById('tel').value,
+    visitType:document.getElementById('visit-type').value,
+    notes:document.getElementById('notes').value
+  };
+  fetch('https://hook.eu1.make.com/gu7s6s8jo5imtmmpwotk1vqyt6l4hm9z',{
+    method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)
+  }).catch(function(e){console.log(e);});
+  ['sec-menu','sec-datetime','sec-info','sec-confirm'].forEach(function(id){
+    document.getElementById(id).classList.remove('active');
+  });
+  document.getElementById('sec-success').classList.add('active');
+  document.getElementById('store-footer').style.display='none';
+  document.querySelectorAll('.step').forEach(function(s){s.classList.add('done');});
+  window.scrollTo(0,0);
 }
 </script>
 </body>
