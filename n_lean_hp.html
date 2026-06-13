@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -251,6 +252,48 @@ body{background:var(--black);color:var(--cream);font-family:'Noto Serif JP',seri
 
 <script>
 var selectedMenuName='',selectedPrice='',selectedDuration='',selectedDate='',selectedTime='';
+var lineUserId='';
+var LINE_CLIENT_ID='2010370762';
+var LINE_REDIRECT_URI=encodeURIComponent('https://project-pr82b.vercel.app/n_lean_hp.html');
+
+// LINEログイン処理
+function initLineLogin(){
+  var params=new URLSearchParams(window.location.search);
+  var code=params.get('code');
+  if(code){
+    // コールバック：アクセストークン取得
+    fetch('https://api.line.me/oauth2/v2.1/token',{
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:'grant_type=authorization_code&code='+code+'&redirect_uri='+decodeURIComponent(LINE_REDIRECT_URI)+'&client_id='+LINE_CLIENT_ID+'&client_secret=cdacdadc6ad8d620eea9a9a3cee2f2bd'
+    })
+    .then(function(r){return r.json();})
+    .then(function(d){
+      if(d.access_token){
+        return fetch('https://api.line.me/v2/profile',{headers:{'Authorization':'Bearer '+d.access_token}});
+      }
+    })
+    .then(function(r){return r.json();})
+    .then(function(profile){
+      if(profile&&profile.userId){
+        lineUserId=profile.userId;
+        // URLのcodeパラメータを消す
+        window.history.replaceState({},'',window.location.pathname);
+      }
+    })
+    .catch(function(e){console.log('LINE login error:',e);});
+  } else {
+    // LINEログインへリダイレクト
+    var state=Math.random().toString(36).substring(2);
+    var loginUrl='https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id='+LINE_CLIENT_ID+'&redirect_uri='+LINE_REDIRECT_URI+'&state='+state+'&scope=profile';
+    window.location.href=loginUrl;
+  }
+}
+
+// ページ読み込み時にLINEログイン
+window.addEventListener('load',function(){
+  initLineLogin();
+});
 var menuData={
   m1:{name:'髪を太く育てるヘッドスパ＋顔肌うるさらエステ＋カット＋顔そり＋眉カット',price:'¥15,500',duration:'150分'},
   m2:{name:'クレンジング＋カット',price:'¥8,800',duration:'90分'},
@@ -415,7 +458,8 @@ function submitBooking(){
     name:document.getElementById('name').value,
     tel:document.getElementById('tel').value,
     visitType:document.getElementById('visit-type').value,
-    notes:document.getElementById('notes').value
+    notes:document.getElementById('notes').value,
+    lineUserId:lineUserId
   };
   fetch('https://hook.eu1.make.com/gu7s6s8jo5imtmmpwotk1vqyt6l4hm9z',{
     method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)
